@@ -1,0 +1,211 @@
+{
+  "project": "Leakage-aware diabetes classification (tabular ML)",
+  "selected_model": "HistGradientBoosting",
+  "best_hyperparameters": {
+    "classifier__min_samples_leaf": 60,
+    "classifier__max_leaf_nodes": 31,
+    "classifier__max_iter": 140,
+    "classifier__learning_rate": 0.08,
+    "classifier__l2_regularization": 3.0
+  },
+  "threshold_selected_on_training_oof_for_max_f1": 0.7391663127290152,
+  "threshold_selected_on_training_oof_for_accuracy_with_recall_floor": 0.8,
+  "minimum_recall_constraint_for_accuracy_threshold": 0.3,
+  "primary_selection_metric": "mean cross-validated average precision (PR-AUC); primary threshold maximizes F1 on training OOF predictions",
+  "train_metrics_in_sample": {
+    "accuracy": 0.8711321441572625,
+    "balanced_accuracy": 0.6964675723906119,
+    "precision": 0.3388659793814433,
+    "recall_sensitivity": 0.48437960506926026,
+    "specificity": 0.9085555397119635,
+    "f1": 0.3987625864369768,
+    "f2": 0.4460699164042992,
+    "roc_auc": 0.8485048482022083,
+    "pr_auc_average_precision": 0.347993806616477,
+    "tn": 63717,
+    "fp": 6413,
+    "fn": 3499,
+    "tp": 3287,
+    "threshold": 0.7391663127290152,
+    "positive_rate_actual": 0.08822611680274585,
+    "positive_rate_predicted": 0.1261116022674086,
+    "majority_class_accuracy_baseline": 0.9117738831972542,
+    "accuracy_minus_majority_baseline": -0.04064173903999169
+  },
+  "test_metrics_held_out": {
+    "accuracy": 0.8659386375455018,
+    "balanced_accuracy": 0.6812277184919434,
+    "precision": 0.31866776315789475,
+    "recall_sensitivity": 0.4569575471698113,
+    "specificity": 0.9054978898140755,
+    "f1": 0.375484496124031,
+    "f2": 0.4204644097222222,
+    "roc_auc": 0.8266179213000724,
+    "pr_auc_average_precision": 0.31909277019505955,
+    "tn": 15877,
+    "fp": 1657,
+    "fn": 921,
+    "tp": 775,
+    "threshold": 0.7391663127290152,
+    "positive_rate_actual": 0.08819552782111284,
+    "positive_rate_predicted": 0.12646905876235048,
+    "majority_class_accuracy_baseline": 0.9118044721788872,
+    "accuracy_minus_majority_baseline": -0.04586583463338534
+  },
+  "train_metrics_accuracy_oriented_threshold": {
+    "accuracy": 0.8973165531228873,
+    "balanced_accuracy": 0.6411472080249769,
+    "precision": 0.4005722460658083,
+    "recall_sensitivity": 0.3300913645741232,
+    "specificity": 0.9522030514758306,
+    "f1": 0.36193246081757957,
+    "f2": 0.3421309872922776,
+    "roc_auc": 0.8485048482022083,
+    "pr_auc_average_precision": 0.347993806616477,
+    "tn": 66778,
+    "fp": 3352,
+    "fn": 4546,
+    "tp": 2240,
+    "threshold": 0.8,
+    "positive_rate_actual": 0.08822611680274585,
+    "positive_rate_predicted": 0.07270268864735556,
+    "majority_class_accuracy_baseline": 0.9117738831972542,
+    "accuracy_minus_majority_baseline": -0.014457330074366892
+  },
+  "test_metrics_accuracy_oriented_threshold": {
+    "accuracy": 0.894383775351014,
+    "balanced_accuracy": 0.6297195704410407,
+    "precision": 0.3787110789283128,
+    "recall_sensitivity": 0.30837264150943394,
+    "specificity": 0.9510664993726474,
+    "f1": 0.33994150146246344,
+    "f2": 0.320269442743417,
+    "roc_auc": 0.8266179213000724,
+    "pr_auc_average_precision": 0.31909277019505955,
+    "tn": 16676,
+    "fp": 858,
+    "fn": 1173,
+    "tp": 523,
+    "threshold": 0.8,
+    "positive_rate_actual": 0.08819552782111284,
+    "positive_rate_predicted": 0.0718148725949038,
+    "majority_class_accuracy_baseline": 0.9118044721788872,
+    "accuracy_minus_majority_baseline": -0.017420696827873172
+  },
+  "tuning_cv_best_pr_auc": 0.3232371944530886,
+  "test_set_used_for_model_selection_or_tuning": false,
+  "raw_model_inputs": [
+    "gender",
+    "age",
+    "hypertension",
+    "heart_disease",
+    "smoking_history",
+    "bmi"
+  ],
+  "engineered_features": [
+    "log_bmi",
+    "comorbidity_count",
+    "obese",
+    "age_x_bmi",
+    "age_group"
+  ],
+  "engineered_feature_count": 5,
+  "total_pre_encoding_features": 11,
+  "encoded_model_matrix_feature_count": 21,
+  "diagnostic_features_excluded": [
+    "HbA1c_level",
+    "blood_glucose_level"
+  ],
+  "class_imbalance_handling": "class_weight in estimators; stratified splitting/CV; no SMOTE",
+  "data_audit": {
+    "raw_rows": 100000,
+    "raw_columns": 9,
+    "exact_duplicate_rows_removed": 3854,
+    "rows_after_duplicate_removal": 96146,
+    "missing_cells_before_pipeline_imputation": 0,
+    "missing_cells_in_original_file": 0,
+    "gender_other_rows_retained": 18,
+    "smoking_no_info_rows_retained": 32887,
+    "rows_removed_for_missing_target": 0,
+    "domain_validation": [
+      {
+        "column": "age",
+        "expected_rule": "0 <= age <= 120 years",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "bmi",
+        "expected_rule": "0 < BMI <= 100",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "HbA1c_level",
+        "expected_rule": "0 < HbA1c <= 20 (audit-only field)",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "blood_glucose_level",
+        "expected_rule": "0 < glucose <= 1000 (audit-only field)",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "hypertension",
+        "expected_rule": "binary values {0, 1}",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "heart_disease",
+        "expected_rule": "binary values {0, 1}",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "gender",
+        "expected_rule": "Female, Male or Other",
+        "invalid_count": 0,
+        "status": "PASS"
+      },
+      {
+        "column": "smoking_history",
+        "expected_rule": "never, former, current, not current, ever or No Info",
+        "invalid_count": 0,
+        "status": "PASS"
+      }
+    ],
+    "clean_rows": 96146,
+    "clean_columns": 9,
+    "class_0_count": 87664,
+    "class_1_count": 8482,
+    "class_0_percent": 91.17800012481018,
+    "class_1_percent": 8.821999875189816,
+    "class_imbalance_ratio_majority_to_minority": 10.335298278707851,
+    "raw_model_inputs": [
+      "gender",
+      "age",
+      "hypertension",
+      "heart_disease",
+      "smoking_history",
+      "bmi"
+    ],
+    "engineered_features": [
+      "log_bmi",
+      "comorbidity_count",
+      "obese",
+      "age_x_bmi",
+      "age_group"
+    ],
+    "diagnostic_features_excluded": [
+      "HbA1c_level",
+      "blood_glucose_level"
+    ],
+    "missing_handling": "Missing values, if encountered, are imputed inside CV-fitted pipelines; no full-data imputation.",
+    "outlier_handling": "IQR outliers reported but not automatically removed.",
+    "imbalance_handling": "class_weight='balanced' or 'balanced_subsample' for supported models; no pre-split resampling."
+  },
+  "warning": "Educational ML output only. This dataset has no patient IDs or visit dates, so patient-level independence/longitudinal history cannot be verified. The score is not a clinical diagnosis or calibrated medical risk estimate."
+}

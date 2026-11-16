@@ -1,0 +1,90 @@
+{
+  "raw_rows": 100000,
+  "raw_columns": 9,
+  "exact_duplicate_rows_removed": 3854,
+  "rows_after_duplicate_removal": 96146,
+  "missing_cells_before_pipeline_imputation": 0,
+  "missing_cells_in_original_file": 0,
+  "gender_other_rows_retained": 18,
+  "smoking_no_info_rows_retained": 32887,
+  "rows_removed_for_missing_target": 0,
+  "domain_validation": [
+    {
+      "column": "age",
+      "expected_rule": "0 <= age <= 120 years",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "bmi",
+      "expected_rule": "0 < BMI <= 100",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "HbA1c_level",
+      "expected_rule": "0 < HbA1c <= 20 (audit-only field)",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "blood_glucose_level",
+      "expected_rule": "0 < glucose <= 1000 (audit-only field)",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "hypertension",
+      "expected_rule": "binary values {0, 1}",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "heart_disease",
+      "expected_rule": "binary values {0, 1}",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "gender",
+      "expected_rule": "Female, Male or Other",
+      "invalid_count": 0,
+      "status": "PASS"
+    },
+    {
+      "column": "smoking_history",
+      "expected_rule": "never, former, current, not current, ever or No Info",
+      "invalid_count": 0,
+      "status": "PASS"
+    }
+  ],
+  "clean_rows": 96146,
+  "clean_columns": 9,
+  "class_0_count": 87664,
+  "class_1_count": 8482,
+  "class_0_percent": 91.17800012481018,
+  "class_1_percent": 8.821999875189816,
+  "class_imbalance_ratio_majority_to_minority": 10.335298278707851,
+  "raw_model_inputs": [
+    "gender",
+    "age",
+    "hypertension",
+    "heart_disease",
+    "smoking_history",
+    "bmi"
+  ],
+  "engineered_features": [
+    "log_bmi",
+    "comorbidity_count",
+    "obese",
+    "age_x_bmi",
+    "age_group"
+  ],
+  "diagnostic_features_excluded": [
+    "HbA1c_level",
+    "blood_glucose_level"
+  ],
+  "missing_handling": "Missing values, if encountered, are imputed inside CV-fitted pipelines; no full-data imputation.",
+  "outlier_handling": "IQR outliers reported but not automatically removed.",
+  "imbalance_handling": "class_weight='balanced' or 'balanced_subsample' for supported models; no pre-split resampling."
+}
